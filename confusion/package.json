@@ -14,10 +14,20 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-native-fontawesome": "^0.2.4",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/compat": "^5.1.14",
+    "@react-navigation/native": "^5.2.3",
+    "@react-navigation/stack": "^5.2.18",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-elements": "^1.0.0-beta8",
-    "react-native-vector-icons": "^6.6.0"
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-safe-area-context": "^0.7.3",
+    "react-native-safe-area-view": "^1.1.1",
+    "react-native-screens": "^2.7.0",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.3.9",
+    "react-navigation-stack": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
