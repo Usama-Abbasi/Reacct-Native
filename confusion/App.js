@@ -1,13 +1,14 @@
 import React from 'react';
 import Main from './component/MainComponents';
-// import 'react-native-gesture-handler';
-// import {NavigationContainer} from '@react-navigation/native';
+import {ConfigureStore} from './redux/configureStore';
+import {Provider} from 'react-redux';
+const store=ConfigureStore();
 export default class App extends React.Component {
   render() {
     return (
-      
-
+      <Provider store={store}>
         <Main />
+        </Provider>
     
     );
   }
