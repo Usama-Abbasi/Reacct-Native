@@ -2,6 +2,7 @@ import { View, FlatList ,TouchableOpacity} from 'react-native';
 import { Tile } from 'react-native-elements';
 import React, { Component } from 'react';
 import {Dishdetail} from './DishdetailComponent';
+import { Loading } from './LoadingComponent';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -40,13 +41,27 @@ const mapStateToProps = state => {
                       />
             );
         };
-    return (
+        if (this.props.dishes.isLoading) {
+            return(
+                <Loading />
+            );
+        }
+        else if (this.props.dishes.errMess) {
+            return(
+                <View>            
+                    <Text>{props.dishes.errMess}</Text>
+                </View>            
+            );
+        }
+        else{
+          return (
             <FlatList 
                 data={this.props.dishes.dishes}
                 renderItem={renderMenuItem}
                 keyExtractor={item => item.id.toString()}
                 />
-    );
+              );
+          }
     }
 }
 
