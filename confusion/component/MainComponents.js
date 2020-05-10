@@ -10,6 +10,7 @@ import Home from './HomeComponent';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
+import Reservation from './ReservationComponent';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
@@ -38,6 +39,28 @@ const HeaderOptions = {
   }
 };
 const Stack=createStackNavigator();
+function ReservationStack(){
+  return(
+    <Stack.Navigator screenOptions={HeaderOptions}>
+       <Stack.Screen name="Reservation" component={Reservation} 
+        options={
+          ({navigation}) => ({
+            headerLeft: () => (
+                <Icon 
+                    name='menu' 
+                    size={24}
+                    color='white'
+                    onPress={() => 
+                        navigation.toggleDrawer()}
+                />
+            )
+        
+        })
+        
+        }/>
+    </Stack.Navigator>
+  );
+}
 function HomeStack(){
   return(
     <Stack.Navigator screenOptions={HeaderOptions}>
@@ -185,6 +208,17 @@ function MyDrawer(){
                     drawerIcon: ({tintColor}) => (
                         <Icon
                             name='address-card'
+                            type='font-awesome'
+                            size={24}
+                            color={tintColor}
+                        />
+                    )
+                }} />
+                <Drawer.Screen name="Reservation" component={ReservationStack} options={{
+                    title:'Reserve Table',
+                    drawerIcon: ({tintColor}) => (
+                        <Icon
+                            name='cutlery'
                             type='font-awesome'
                             size={24}
                             color={tintColor}
