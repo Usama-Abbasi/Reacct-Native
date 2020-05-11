@@ -10,6 +10,7 @@ import Home from './HomeComponent';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
+import Favorites from './FavoriteComponent';
 import Reservation from './ReservationComponent';
 import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
@@ -58,6 +59,30 @@ function ReservationStack(){
         })
         
         }/>
+    </Stack.Navigator>
+  );
+}
+function FavoriteStack(){
+  return(
+    <Stack.Navigator screenOptions={HeaderOptions}>
+       <Stack.Screen name="Favorites" component={Favorites} 
+        options={
+          ({navigation}) => ({
+            headerLeft: () => (
+                <Icon 
+                    name='menu' 
+                    size={24}
+                    color='white'
+                    onPress={() => 
+                        navigation.toggleDrawer()}
+                />
+            )
+        
+        })
+        
+        }/>
+       <Stack.Screen name="Dishdetail" component={Dishdetail} />
+
     </Stack.Navigator>
   );
 }
@@ -219,6 +244,17 @@ function MyDrawer(){
                     drawerIcon: ({tintColor}) => (
                         <Icon
                             name='cutlery'
+                            type='font-awesome'
+                            size={24}
+                            color={tintColor}
+                        />
+                    )
+                }} />
+                <Drawer.Screen name="Favorites" component={FavoriteStack} options={{
+                    title:'My Favorite',
+                    drawerIcon: ({tintColor}) => (
+                        <Icon
+                            name='heart'
                             type='font-awesome'
                             size={24}
                             color={tintColor}
