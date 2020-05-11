@@ -4,6 +4,8 @@ import { Card,Icon ,Input,Rating,AirbnbRating} from 'react-native-elements';
 import { postFavorite,postComments } from '../redux/ActionCreators';
 import {connect} from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable';
+
 const mapStateToProps=state=>{
     return{
         dishes:state.dishes,
@@ -20,6 +22,7 @@ function RenderDish(props){
     const dish=props.dish;
     if(dish!=null){
           return(
+            <Animatable.View animation="fadeInDown" duration={2000} delay={1000}>
               <Card
                    featuredTitle={dish.name}
                    image={{uri:baseUrl+dish.image}}>
@@ -41,6 +44,7 @@ function RenderDish(props){
                     onPress={() =>props.onPress()}
                     />
                    </Card>
+                   </Animatable.View>
           );
     }else{
         return(
@@ -60,12 +64,14 @@ function RenderComment(props){
         );
     }
     return(
+        <Animatable.View animation="fadeInUp" duration={2000} delay={1000}>
         <Card title="Comments">
             <FlatList
             data={comments}
             renderItem={renderCommentItem}
             keyExtractor={item=>item.id.toString()}/>
         </Card>
+        </Animatable.View>
     );
 }
 class Dishdetail extends Component{
