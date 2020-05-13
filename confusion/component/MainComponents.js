@@ -10,6 +10,7 @@ import Home from './HomeComponent';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
+import Login from './LoginComponent';
 import Favorites from './FavoriteComponent';
 import Reservation from './ReservationComponent';
 import { Icon } from 'react-native-elements';
@@ -44,6 +45,28 @@ function ReservationStack(){
   return(
     <Stack.Navigator screenOptions={HeaderOptions}>
        <Stack.Screen name="Reservation" component={Reservation} 
+        options={
+          ({navigation}) => ({
+            headerLeft: () => (
+                <Icon 
+                    name='menu' 
+                    size={24}
+                    color='white'
+                    onPress={() => 
+                        navigation.toggleDrawer()}
+                />
+            )
+        
+        })
+        
+        }/>
+    </Stack.Navigator>
+  );
+}
+function LoginStack(){
+  return(
+    <Stack.Navigator screenOptions={HeaderOptions}>
+       <Stack.Screen name="Login" component={Login} 
         options={
           ({navigation}) => ({
             headerLeft: () => (
@@ -193,8 +216,20 @@ function MyDrawer(){
   return(
        <Drawer.Navigator
        drawerStyle={{backgroundColor:'#D1C4E9'}} 
-       drawerContent={props=><CustomDrawerContentComponent{...props}/>}
+       initialRouteName={HomeStack}
+       drawerContent={props=><CustomDrawerContentComponent{...props} />}
        >
+            <Drawer.Screen name="Login" component={LoginStack} options={{
+                   title:'Login',
+                    drawerIcon: ({tintColor}) => (
+                        <Icon
+                            name='Login'
+                            type='font-awesome'
+                            size={24}
+                            color={tintColor}
+                        />
+                    )
+                }}  />
          <Drawer.Screen name="HomeStack" component={HomeStack} options={{
                    title:'Home',
                     drawerIcon: ({tintColor}) => (

@@ -51,7 +51,7 @@ class Reservation extends Component {
           onPress: () => console.log("Cancel Pressed"),
           style: "cancel"
         },
-        { text: "OK", onPress: () => console.log("Your Table Is Reserved") }
+        { text: "OK", onPress: () =>this.resetForm()}
       ],
       { cancelable: false }
     );
